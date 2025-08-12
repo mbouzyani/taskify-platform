@@ -1,6 +1,7 @@
 # ==============================================
-# Taskify Platform - Custom .gitignore
+# Taskify Platform - Comprehensive .gitignore
 # Technology Stack: React+TypeScript+Vite + .NET 9 + SQL Server
+# Last Updated: 2025-08-12 18:53:48
 # ==============================================
 
 # ==============================================
@@ -20,9 +21,14 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
+[Tt]est[Rr]esult*/
+TestResults/
 
-# Visual Studio files
+# Visual Studio / VS Code
 .vs/
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
 *.rsuser
 *.suo
 *.user
@@ -30,22 +36,64 @@ bld/
 *.sln.docstates
 *.userprefs
 
-# Test results
-[Tt]est[Rr]esult*/
-TestResults/
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Test Coverage
 [Cc]overage/
 coverage.json
 coverage.xml
 *.coverage
 *.coveragexml
+*.cobertura.xml
 
 # NuGet packages
 *.nupkg
 *.snupkg
 **/packages/*
 !**/packages/build/
+*.nuget.props
+*.nuget.targets
 
-# Entity Framework migrations
+# Entity Framework
 **/Migrations/[0-9]*_*.cs
 **/Migrations/[0-9]*_*.Designer.cs
 
@@ -57,31 +105,77 @@ coverage.xml
 node_modules/
 /.pnp
 .pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
 # Build outputs
 dist/
 build/
 .vite/
 *.tsbuildinfo
+dist-ssr
+*.local
 
-# Development
+# Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.staging
 
 # Vite
 .vite/
-dist-ssr
-*.local
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
 
-# ESLint cache
+# Testing
+coverage/
+.nyc_output
+*.lcov
+
+# ESLint
 .eslintcache
+
+# Prettier
+.prettierignore
+
+# TypeScript
+*.tsbuildinfo
+
+# Storybook build outputs
+storybook-static
+
+# ==============================================
+# Package Managers
+# ==============================================
+
+# npm
+package-lock.json
+.npm
+
+# Yarn
+yarn.lock
+.yarn-integrity
+
+# pnpm
+pnpm-lock.yaml
 
 # ==============================================
 # Database & Docker
@@ -91,19 +185,31 @@ dist-ssr
 *.mdf
 *.ldf
 *.ndf
+*.bak
+
+# Docker
+.dockerignore
+Dockerfile.prod
+docker-compose.override.yml
+docker-compose.prod.yml
 
 # ==============================================
 # Development Tools & IDEs
 # ==============================================
 
-# VS Code
-.vscode/settings.json
-.vscode/launch.json
-.vscode/extensions.json
-.vscode/tasks.json
-
 # JetBrains Rider
 .idea/
+*.sln.iml
+
+# VS Code extensions
+.vscode/extensions.json
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
 
 # ==============================================
 # Operating System Files
@@ -111,21 +217,56 @@ dist-ssr
 
 # Windows
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
+ehthumbs_vista.db
 Desktop.ini
 .BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
 *.lnk
 
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon
 ._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
 # Linux
 *~
+.fuse_hidden*
 .directory
 .Trash-*
+.nfs*
+
+# ==============================================
+# Security & Credentials
+# ==============================================
+
+# Secrets and API keys
+secrets.json
+appsettings.secrets.json
+.secrets/
+*.key
+*.pem
+.env.secrets
+
+# Certificate files
+*.pfx
+*.p12
+*.crt
+*.cer
 
 # ==============================================
 # Application-Specific
@@ -144,20 +285,44 @@ tmp/
 # Backup files
 *.bak
 *.backup
+*.old
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
 
 # ==============================================
-# Security & Credentials
+# Development Artifacts
 # ==============================================
 
-# Secrets and API keys
-secrets.json
-appsettings.secrets.json
-*.key
-*.pem
-.env.secrets
+# Source maps (if you don't want to include them)
+*.map
 
-# Certificate files
-*.pfx
-*.p12
-*.crt
-*.cer
+# Hot reload
+.hot-reload
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Editor directories and files
+.idea
+*.swp
+*.swo
+*~
+
+# ==============================================
+# Performance and Monitoring
+# ==============================================
+
+# Profiling data
+*.prof
+*.trace
+
+# Monitoring
+.nyc_output
+
+# ==============================================
+# End of .gitignore
+# ==============================================
