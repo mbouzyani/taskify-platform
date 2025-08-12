@@ -11,7 +11,7 @@ $backupPath = ".\.gitignore.backup.$(Get-Date -Format 'yyyyMMdd-HHmmss')"
 
 if (Test-Path $gitignorePath) {
     Copy-Item $gitignorePath $backupPath
-    Write-Host "✅ Backup created: $backupPath" -ForegroundColor Green
+    Write-Host " Backup created: $backupPath" -ForegroundColor Green
 }
 
 # Define the new comprehensive .gitignore content
@@ -349,8 +349,8 @@ tmp/
 # Write the new .gitignore content
 Set-Content -Path $gitignorePath -Value $newGitignoreContent -Encoding UTF8
 
-Write-Host "✅ .gitignore file has been updated successfully!" -ForegroundColor Green
-Write-Host "📝 Added comprehensive coverage for:" -ForegroundColor Yellow
+Write-Host "  .gitignore file has been updated successfully!" -ForegroundColor Green
+Write-Host "   Added comprehensive coverage for:" -ForegroundColor Yellow
 Write-Host "   • .NET 9 / C# Backend" -ForegroundColor White
 Write-Host "   • React + TypeScript + Vite Frontend" -ForegroundColor White
 Write-Host "   • SQL Server databases" -ForegroundColor White
@@ -361,15 +361,15 @@ Write-Host "   • Security and credentials" -ForegroundColor White
 Write-Host "   • Package managers (npm, yarn, pnpm)" -ForegroundColor White
 
 # Show git status to see what changed
-Write-Host "`n📊 Git status after update:" -ForegroundColor Cyan
+Write-Host " Git status after update:" -ForegroundColor Cyan
 git status --porcelain .gitignore
 
-Write-Host "`n🔍 To see the differences, run:" -ForegroundColor Magenta
+Write-Host " To see the differences, run:" -ForegroundColor Magenta
 Write-Host "   git diff .gitignore" -ForegroundColor White
 
-Write-Host "`n📋 Next steps:" -ForegroundColor Yellow
+Write-Host "    Next steps:" -ForegroundColor Yellow
 Write-Host "   1. Review the changes: git diff .gitignore" -ForegroundColor White
 Write-Host "   2. Test your build: npm run dev" -ForegroundColor White
 Write-Host "   3. Commit the changes: git add .gitignore && git commit -m 'Update .gitignore with comprehensive coverage'" -ForegroundColor White
 
-Write-Host "`n✨ .gitignore update completed!" -ForegroundColor Green
+Write-Host "`   .gitignore update completed!" -ForegroundColor Green
