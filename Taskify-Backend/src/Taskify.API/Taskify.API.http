@@ -1,0 +1,34 @@
+@Taskify.API_HostAddress = https://localhost:7172
+@contentType = application/json
+
+### Get all projects
+GET {{Taskify.API_HostAddress}}/api/projects
+Accept: {{contentType}}
+
+### Get project by ID
+GET {{Taskify.API_HostAddress}}/api/projects/3fa85f64-5717-4562-b3fc-2c963f66afa6
+Accept: {{contentType}}
+
+### Create a new project
+POST {{Taskify.API_HostAddress}}/api/projects
+Content-Type: {{contentType}}
+
+{
+  "name": "Sample Project",
+  "description": "This is a sample project for testing",
+  "color": "#6366F1"
+}
+
+### Update project
+PUT {{Taskify.API_HostAddress}}/api/projects/3fa85f64-5717-4562-b3fc-2c963f66afa6
+Content-Type: {{contentType}}
+
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "name": "Updated Project",
+  "description": "This project has been updated",
+  "color": "#10B981"
+}
+
+### Delete project
+DELETE {{Taskify.API_HostAddress}}/api/projects/3fa85f64-5717-4562-b3fc-2c963f66afa6
