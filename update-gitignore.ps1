@@ -3,7 +3,7 @@
 # Technology Stack: React+TypeScript+Vite + .NET 9 + SQL Server
 # ============================================================================
 
-Write-Host "🔧 Updating .gitignore file for Taskify Platform..." -ForegroundColor Cyan
+Write-Host " Updating .gitignore file for Taskify Platform..." -ForegroundColor Cyan
 
 # Backup the current .gitignore
 $gitignorePath = ".\.gitignore"
