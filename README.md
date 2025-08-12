@@ -22,8 +22,10 @@ This guide explains how to run the Taskify platform with:
 
 ### Step 1: Clone Repository (Azure Devops - URL)
 
-'git clone https://engmbouziani@dev.azure.com/engmbouziani/Taskify-Platform/_git/Taskify-Platform' | 
+'git clone https://engmbouziani@dev.azure.com/engmbouziani/Taskify-Platform/_git/Taskify-Platform'
+
 'git clone https://github.com/mbouzyani/taskify-platform.git'
+
 
 ### Step 2: Start Backend Services (Docker)
 
