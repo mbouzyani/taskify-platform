@@ -83,7 +83,7 @@ class AuthService {
 
       return data;
     } catch (error) {
-      console.error('🔥 Login error:', error);
+      console.error('[ERROR] Login error:', error);
       
       if (error instanceof TypeError && error.message.includes('fetch')) {
         throw new Error('Cannot connect to backend server. Please ensure the API is running on http://localhost:5217');

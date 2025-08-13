@@ -233,7 +233,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 
         {isOverdue && (
           <div className="mt-2 text-xs text-red-600 font-medium flex items-center">
-            <span className="animate-pulse">⚠️</span>
+            <span className="animate-pulse">!</span>
             <span className="ml-1">Overdue</span>
           </div>
         )}

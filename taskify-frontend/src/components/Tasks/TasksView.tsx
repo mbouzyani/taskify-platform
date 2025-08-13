@@ -181,7 +181,9 @@ export const TasksView: React.FC = () => {
     return (
       <div className="p-6">
         <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-          <div className="w-12 h-12 text-red-400 mx-auto mb-4">⚠️</div>
+          <div className="w-12 h-12 text-red-400 mx-auto mb-4 flex items-center justify-center">
+            <span className="text-2xl">!</span>
+          </div>
           <h3 className="text-lg font-medium text-red-900 mb-2">Failed to Load Tasks</h3>
           <p className="text-red-700 mb-4">{error}</p>
           <button

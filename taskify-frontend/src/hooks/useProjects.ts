@@ -21,16 +21,16 @@ export const useProjects = (initialFilters?: ProjectFiltersDto) => {
       const response = await projectsApi.getProjects(filters);
       
       if (response.success && Array.isArray(response.data)) {
-        console.log('✅ useProjects: Successfully loaded projects:', response.data);
+        console.log('[OK] useProjects: Successfully loaded projects:', response.data);
         setProjects(response.data);
         setTotalCount(response.data.length);
         setTotalPages(1); // Since we're not using pagination
       } else {
-        console.error('❌ useProjects: Failed to fetch projects:', response);
+        console.error('[ERROR] useProjects: Failed to fetch projects:', response);
         setError('Failed to fetch projects');
       }
     } catch (err) {
-      console.error('🚨 useProjects: Exception fetching projects:', err);
+      console.error('[ERROR] useProjects: Exception fetching projects:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch projects');
     } finally {
       setLoading(false);

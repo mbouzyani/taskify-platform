@@ -1,7 +1,7 @@
 # Taskify Platform - Essential GitIgnore Fix Script
 # This script fixes .gitignore to track critical deployment files
 
-Write-Host "🔧 Fixing .gitignore for deployment readiness..." -ForegroundColor Yellow
+Write-Host "Fixing .gitignore for deployment readiness..." -ForegroundColor Yellow
 
 # Read current gitignore
 $gitignorePath = ".gitignore"
@@ -40,15 +40,15 @@ foreach ($line in $content) {
 # Write the updated content
 $newContent | Set-Content $gitignorePath -Encoding UTF8
 
-Write-Host "✅ .gitignore updated!" -ForegroundColor Green
+Write-Host "[OK] .gitignore updated!" -ForegroundColor Green
 Write-Host ""
-Write-Host "🔍 Changes made:" -ForegroundColor Cyan
+Write-Host "Changes made:" -ForegroundColor Cyan
 Write-Host "  • Added exceptions for InitialCreate migration files" -ForegroundColor White
 Write-Host "  • Migration files will now be tracked for deployment" -ForegroundColor White
 Write-Host ""
 
 # Force add the migration files
-Write-Host "📦 Adding migration files to git..." -ForegroundColor Yellow
+Write-Host "Adding migration files to git..." -ForegroundColor Yellow
 $migrationPath = "Taskify-Backend/src/Taskify.Infrastructure/Migrations/"
 $migrationFiles = Get-ChildItem "$migrationPath*InitialCreate*" -ErrorAction SilentlyContinue
 
@@ -56,12 +56,12 @@ if ($migrationFiles) {
     foreach ($file in $migrationFiles) {
         $relativePath = $file.FullName.Replace("$PWD\", "").Replace("\", "/")
         & git add -f $relativePath
-        Write-Host "  ✅ Added: $($file.Name)" -ForegroundColor Green
+        Write-Host "  [OK] Added: $($file.Name)" -ForegroundColor Green
     }
 } else {
-    Write-Host "  ⚠️  No InitialCreate migration files found" -ForegroundColor Yellow
+    Write-Host "  [WARNING] No InitialCreate migration files found" -ForegroundColor Yellow
 }
 
 Write-Host ""
-Write-Host "🎯 Ready to commit!" -ForegroundColor Green
+Write-Host "Ready to commit!" -ForegroundColor Green
 Write-Host "Run: git commit -m 'Fixed gitignore to track essential migration files'" -ForegroundColor Cyan

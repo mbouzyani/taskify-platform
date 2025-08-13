@@ -1,4 +1,4 @@
-# 🚀 Quick Setup Guide for New Machine
+# Quick Setup Guide for New Machine
 
 ## Prerequisites
 - Docker Desktop installed and running
