@@ -140,6 +140,9 @@ dist-ssr
 .env.production.local
 .env.staging
 
+# Exception: Track .env.development for easy deployment
+!.env.development
+
 # Vite
 .vite/
 vite.config.js.timestamp-*

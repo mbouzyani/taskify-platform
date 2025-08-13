@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Taskify.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Taskify.Infrastructure.Data;
 namespace Taskify.Infrastructure.Migrations
 {
     [DbContext(typeof(TaskifyDbContext))]
-    partial class TaskifyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250813154802_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
