@@ -180,17 +180,7 @@ netstat -ano | findstr :5217
 If ports 3000, 5217, or 1433 are in use:
 1. Stop conflicting services
 2. Or modify ports in `docker-compose.yml`
-
-
-### **Architecture Benefits Achieved**
-
-1. **Separation of Concerns**: Each layer has specific responsibilities
-2. **Testability**: 25 unit tests with 100% controller coverage
-3. **Scalability**: CQRS allows read/write optimization
-4. **Maintainability**: Clean dependencies and clear boundaries
-5. **Domain-Driven**: Business logic centralized in Domain layer
-6. **Technology Agnostic**: Infrastructure abstracted from business logic
-
+   
 
 ** Technology Stack:**
 - **Backend**: .NET 9 + ASP.NET Core
