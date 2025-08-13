@@ -42,7 +42,8 @@ npm install
 npm run dev
 ```
 Or
-Run the setup script (Windows)
+Run the setup script (Windows) :
+
 .\setup-verification.ps1
 
 ## Service URLs
