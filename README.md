@@ -44,6 +44,7 @@ npm run dev
 Or
 Run the setup script (Windows) :
 
+cd taskify-platform
 .\setup-verification.ps1
 
 ## Service URLs
