@@ -30,6 +30,7 @@ This guide explains how to run the Taskify platform with:
 ```powershell
 
 cd Taskify-Backend
+
 docker-compose up --build -d
 ```
 
