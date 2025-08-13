@@ -20,9 +20,7 @@ This guide explains how to run the Taskify platform with:
 
 ## Quick Start
 
-### Step 1: Clone Repository (Azure Devops - URL)
-
-'git clone https://engmbouziani@dev.azure.com/engmbouziani/Taskify-Platform/_git/Taskify-Platform'
+### Step 1: Clone Repository (URL)
 
 'git clone https://github.com/mbouzyani/taskify-platform.git'
 
@@ -43,6 +41,9 @@ cd taskify-frontend
 npm install
 npm run dev
 ```
+Or
+Run the setup script (Windows)
+.\setup-verification.ps1
 
 ## Service URLs
 
