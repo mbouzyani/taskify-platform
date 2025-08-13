@@ -20,6 +20,16 @@ public class DashboardController : ControllerBase
     }
     
     /// <summary>
+    /// Simple test endpoint to verify API connectivity
+    /// </summary>
+    [HttpGet("test")]
+    [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+    public ActionResult GetTest()
+    {
+        return Ok(new { message = "API is working!", timestamp = DateTime.UtcNow, status = "healthy" });
+    }
+    
+    /// <summary>
     /// Get comprehensive dashboard data including statistics, activities, and visualizations
     /// </summary>
     [HttpGet]

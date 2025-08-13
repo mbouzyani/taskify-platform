@@ -13,15 +13,14 @@ using Taskify.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add CORS services
+// Add CORS services - Allow all origins for development
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://localhost:5173") // Frontend development server
+        policy.AllowAnyOrigin()  // Allow all origins for development
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
     });
 });
 
