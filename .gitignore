@@ -94,8 +94,13 @@ coverage.xml
 *.nuget.targets
 
 # Entity Framework
+# .NET Core Entity Framework Migrations
 **/Migrations/[0-9]*_*.cs
 **/Migrations/[0-9]*_*.Designer.cs
+
+# Exception: Track essential migration files for deployment
+!**/Migrations/*InitialCreate*.cs
+!**/Migrations/*InitialCreate*.Designer.cs
 
 # ==============================================
 # React + TypeScript + Vite Frontend (taskify-frontend/)
