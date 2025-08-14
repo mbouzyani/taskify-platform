@@ -72,24 +72,7 @@ builder.Services.AddSwaggerGen(c =>
     }
 });
 
-// Add CORS services
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("http://localhost:5173") // Frontend development server
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
-    });
-    
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
+// Remove duplicate CORS configuration - already configured above
 
 // Add JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
