@@ -123,19 +123,32 @@ After starting the services:
 
 ### Database Migrations
 ```powershell
-# Access the backend container
+# 1. (Optional, for a clean start) Remove the existing database volume:
+docker-compose down
+docker volume rm taskify-backend_sqlserver_data
+docker-compose up --build -d
+
+# 2. Access the backend container:
 docker exec -it taskify-API bash
 
-# Run migrations (if implemented)
+# 3. Run migrations (inside the container):
+dotnet ef database update
+
+# 4. (If you need to add a migration, inside the container):
+dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+**Note:** If you see errors about missing tables (e.g., 'Users'), always try removing the database volume and re-running migrations as above.
 
 ## Troubleshooting
 
 ### Frontend Issues
 ```bash
-# Clear cache and reinstall
+# Clear cache and reinstall (Linux/Mac)
 rm -rf node_modules package-lock.json
+npm install
+# On Windows (PowerShell):
+Remove-Item -Recurse -Force node_modules, package-lock.json
 npm install
 
 ### Docker Issues
@@ -148,6 +161,15 @@ docker-compose up --build -d
 docker system prune -f
 ```
 
+### Automated Troubleshooting
+
+For a quick health check and diagnostics, run the provided PowerShell script:
+
+```powershell
+./troubleshoot-taskify.ps1
+```
+This script checks for port conflicts, Docker container status, backend health, SQL Server connectivity, and frontend API configuration.
+
 ### Service Not Starting
 ```bash
 # Check service logs
@@ -156,6 +178,15 @@ docker-compose logs [service-name]
 # Example: Check backend logs
 docker-compose logs taskify-api
 ```
+
+### Common Issues & Solutions
+
+- **Port in use:** Use the troubleshooting script or manually check with `netstat` as shown above.
+- **API not reachable:** Ensure backend is running and healthy (`/health` endpoint), check CORS and API URL config.
+- **Database connection errors:** Confirm SQL Server container is running and accessible.
+- **Frontend not connecting:** Verify `VITE_API_URL` in `.env.development` matches backend URL.
+
+For more details, see the script output or review the steps above.
 
 ### Port Issues
 ```bash

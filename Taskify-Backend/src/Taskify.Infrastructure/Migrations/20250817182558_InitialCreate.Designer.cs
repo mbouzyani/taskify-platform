@@ -12,7 +12,7 @@ using Taskify.Infrastructure.Data;
 namespace Taskify.Infrastructure.Migrations
 {
     [DbContext(typeof(TaskifyDbContext))]
-    [Migration("20250813154802_InitialCreate")]
+    [Migration("20250817182558_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

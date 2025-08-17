@@ -15,7 +15,11 @@ public static class DependencyInjection
         services.AddDbContext<TaskifyDbContext>(options =>
             options.UseSqlServer(
                 configuration.GetConnectionString("DefaultConnection"),
-                b => b.MigrationsAssembly(typeof(TaskifyDbContext).Assembly.FullName)));
+                sqlOptions =>
+                {
+                    sqlOptions.MigrationsAssembly(typeof(TaskifyDbContext).Assembly.FullName);
+                    sqlOptions.EnableRetryOnFailure();
+                }));
 
         services.AddScoped<ITaskRepository, TaskRepository>();
         services.AddScoped<IProjectRepository, ProjectRepository>();

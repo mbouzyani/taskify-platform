@@ -1,57 +1,42 @@
 services:
-  taskify-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: taskify-API
-    ports:
-      - "5217:8080"  # Map to the port we've been using
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=TaskifyDb;User Id=sa;Password=Taskify2025!;TrustServerCertificate=true;MultipleActiveResultSets=true;
-      - Jwt__SecretKey=MyVerySecretKeyForJWTTokensThatIsAtLeast32CharactersLong!
-      - Jwt__Issuer=TaskifyAPI
-      - Jwt__Audience=TaskifyClient
-    depends_on:
-      - sqlserver
-    networks:
-      - taskify-network
-    restart: unless-stopped
-
-  sqlserver:
+  db:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: taskify-database
-    user: root
+    container_name: taskify-db
     environment:
-      - ACCEPT_EULA=Y
       - SA_PASSWORD=Taskify2025!
-      - MSSQL_PID=Express
-      - MSSQL_MEMORY_LIMIT_MB=2048
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
     ports:
       - "1433:1433"
     volumes:
-      - sqlserver_data:/var/opt/mssql
-      - ./init-scripts:/docker-entrypoint-initdb.d
-    networks:
-      - taskify-network
+      - taskify-db-data:/var/opt/mssql
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          memory: 2G
-        reservations:
-          memory: 1G
     healthcheck:
-      test: ["CMD-SHELL", "exit 0"]
+      test: ["CMD-SHELL", "timeout 10s bash -c '</dev/tcp/localhost/1433'"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s
+      start_period: 60s
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taskify-api
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5217
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=taskify-db;Database=TaskifyDb;User Id=sa;Password=Taskify2025!;TrustServerCertificate=true;MultipleActiveResultSets=true
+    ports:
+      - "5217:5217"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
 
 volumes:
-  sqlserver_data:
-    driver: local
+  taskify-db-data:
 
 networks:
-  taskify-network:
+  default:
     driver: bridge

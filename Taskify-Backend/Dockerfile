@@ -48,6 +48,7 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 
 # Health check endpoint
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:8080/health || exit 1
+    CMD curl -f http://localhost:5217/health || exit 1
+
 
 ENTRYPOINT ["dotnet", "Taskify.API.dll"]
