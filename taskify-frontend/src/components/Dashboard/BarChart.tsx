@@ -26,7 +26,10 @@ export const BarChart: React.FC<BarChartProps> = ({
     data.map(item => ({ ...item, value: 0 }))
   );
 
-  const maxValue = Math.max(...data.map(item => item.value));
+  // Safely calculate maxValue, ensuring we have valid data
+  const maxValue = data.length > 0 
+    ? Math.max(...data.map(item => Number(item.value) || 0)) 
+    : 0;
 
   useEffect(() => {
     if (animate) {
@@ -40,6 +43,7 @@ export const BarChart: React.FC<BarChartProps> = ({
   }, [data, animate]);
 
   const getBarHeight = (value: number) => {
+    if (maxValue === 0 || !value || isNaN(value)) return 0;
     return (value / maxValue) * (height - 40);
   };
 
@@ -73,10 +77,10 @@ export const BarChart: React.FC<BarChartProps> = ({
                 }}
               >
                 {/* Value label on top of bar */}
-                {showValues && item.value > 0 && (
+                {showValues && item.value > 0 && !isNaN(item.value) && (
                   <div className="relative -top-6 text-center">
                     <span className="text-xs font-medium text-gray-700 bg-white px-1 rounded shadow-sm">
-                      {item.value}
+                      {Number(item.value) || 0}
                     </span>
                   </div>
                 )}
@@ -102,7 +106,7 @@ export const BarChart: React.FC<BarChartProps> = ({
               }}
             >
               <span className="absolute -left-8 -top-2 text-xs text-gray-500">
-                {Math.round(maxValue * percent)}
+                {maxValue > 0 ? Math.round(maxValue * percent) : 0}
               </span>
             </div>
           ))}
